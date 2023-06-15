@@ -7,7 +7,8 @@ package softtestproyek;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,11 +17,10 @@ import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
@@ -34,7 +34,7 @@ public class SoftTestProyek {
      */
     public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
-//        System.setProperty("webdriver.chrome.driver", "D:\\Johans\\Kuliah\\Semester 6\\Software Testing\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "E:\\.KULIAH\\Semester_6\\Software Testing\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         
         String[][] data = readDataFromGoogleSheets();           
@@ -45,8 +45,52 @@ public class SoftTestProyek {
         
 //        registerUser(data,driver,wait);
         loginUser(driver,wait, "test@gmail.com","test1234");
+
+//        driver.quit();
+        configureShop(driver, wait);
+    }
+
+    public static void configureShop(WebDriver driver, WebDriverWait wait){
+        driver.findElement(By.xpath("//a[@href='#category']")).click();
+        driver.findElement(By.xpath("//*[@id=\"category\"]/ul/li[1]/a")).click();
+        WebElement tax = driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/input"));
+        wait.until(ExpectedConditions.elementToBeClickable(tax));
+        tax.click();
+        tax.sendKeys(Keys.BACK_SPACE);
+        tax.sendKeys(Keys.BACK_SPACE);
+        tax.sendKeys("10");
+        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
+
+        //shipping charges
+        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            //
+        }
+        WebElement shippingCharges = driver.findElement(By.xpath("//*[@id=\"category\"]/ul/li[2]/a"));
+        wait.until(ExpectedConditions.elementToBeClickable(shippingCharges));
+        shippingCharges.click();
+
+        WebElement addNewShippingCharge = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a"));
+        wait.until(ExpectedConditions.elementToBeClickable(addNewShippingCharge));
+        addNewShippingCharge.click();
+
+        WebElement selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+        Select select = new Select(selectLang);
+        select.selectByVisibleText("English");
+        WebElement title = driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[2]/input"));
+        title.click();
+        title.sendKeys("A Shipping Charge");
+        WebElement sortText = driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[3]/input"));
+        sortText.click();
+        sortText.sendKeys("abc");
+        WebElement charge = driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/input"));
+        charge.click();
+        charge.sendKeys("23");
+        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
+
+        //manage items
         
-//        driver.quit();               
     }
     
     public static void loginUser(WebDriver driver,WebDriverWait wait,String email, String password){
