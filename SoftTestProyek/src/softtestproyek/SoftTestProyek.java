@@ -52,6 +52,9 @@ public class SoftTestProyek {
 //        configureShop(driver, wait);
 
         wf.theme(driver);
+        waitForPageLoad(driver);
+        Thread.sleep(5000);
+        wf.heroslider(driver);
 
     }
 
