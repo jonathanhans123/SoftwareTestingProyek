@@ -34,7 +34,7 @@ public class SoftTestProyek {
      */
     public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
-        System.setProperty("webdriver.chrome.driver", "D:\\Kuliah\\SMT 6\\Software Testing\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "E:\\.KULIAH\\Semester_6\\Software Testing\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         webfunctions wf = new webfunctions();
@@ -49,7 +49,10 @@ public class SoftTestProyek {
         loginUser(driver,wait, "test@gmail.com","test1234");
 
 //        driver.quit();
-//        configureShop(driver, wait);
+        configureShop(driver, wait);
+        teams(driver, wait);
+//        blog(driver, wait);
+
 
 //        wf.theme(driver);
 //        waitForPageLoad(driver);
@@ -58,7 +61,67 @@ public class SoftTestProyek {
 //        Thread.sleep(2000);
 //        wf.footer(driver);
 
+
     }
+
+    public static void teams(WebDriver driver, WebDriverWait wait){
+        driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[1]/div/ul/li[13]/a")).click();
+
+        WebElement teamName = driver.findElement(By.xpath("//*[@id=\"team_section_title\"]"));
+        wait.until(ExpectedConditions.elementToBeClickable(teamName));
+        teamName.sendKeys("timku");
+
+        driver.findElement(By.xpath("//*[@id=\"team_section_subtitle\"]")).sendKeys("tim yang sangat berjasa dalam upaya pembelaan negara");
+        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div[2]/div/div[3]/div/div/button")).click();
+
+        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            //
+        }
+
+        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div[3]/div/div[1]/a")).click();
+
+        WebElement selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
+        Select select = new Select(selectLang);
+        select.selectByVisibleText("English");
+
+        driver.findElement(By.xpath("//*[@id=\"image\"]")).sendKeys("C:\\\\Users\\\\liant\\\\Pictures\\\\softest\\\\0.jpg");
+        driver.findElement(By.xpath("//*[@id=\"memberForm\"]/div[3]/input")).sendKeys("lele");
+        driver.findElement(By.xpath("//*[@id=\"memberForm\"]/div[4]/input")).sendKeys("ikan");
+        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[3]/div/div/button")).click();
+
+    }
+
+//    public static void blog(WebDriver driver, WebDriverWait wait){
+//        driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[1]/div/ul/li[14]/a")).click();
+//
+//        WebElement cat = driver.findElement(By.xpath("//*[@id=\"blog\"]/ul/li[1]/a"));
+//        wait.until(ExpectedConditions.elementToBeClickable(cat));
+//        cat.click();
+//
+//        WebElement addCat = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a"));
+//        wait.until(ExpectedConditions.elementToBeClickable(addCat));
+//        addCat.click();
+//
+//
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"language\"]")));
+//        WebElement selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+//        Select select = new Select(selectLang);
+//        select.selectByVisibleText("English");
+//
+//        driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[2]/input")).sendKeys("Bloggers Blog");
+//
+//        WebElement status = driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[3]/select"));
+//        Select selectStatus = new Select(status);
+//        selectStatus.selectByVisibleText("Active");
+//
+//        driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/input")).sendKeys("1");
+//
+//
+//    }
+
 
     public static void configureShop(WebDriver driver, WebDriverWait wait){
         driver.findElement(By.xpath("//a[@href='#category']")).click();
@@ -86,6 +149,7 @@ public class SoftTestProyek {
         addNewShippingCharge.click();
 
         WebElement selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
         Select select = new Select(selectLang);
         select.selectByVisibleText("English");
         WebElement title = driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[2]/input"));
@@ -114,6 +178,7 @@ public class SoftTestProyek {
         driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a")).click();
 
         selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
         select = new Select(selectLang);
         select.selectByVisibleText("English");
 
@@ -134,64 +199,68 @@ public class SoftTestProyek {
         } catch (InterruptedException e) {
             //
         }
-
-        WebElement subCat = driver.findElement(By.xpath("//*[@id=\"productManagement\"]/ul/li[2]/a"));
-        wait.until(ExpectedConditions.elementToBeClickable(subCat));
-        subCat.click();
-
-        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a")).click();
-
-        selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
-        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
-        select = new Select(selectLang);
-        select.selectByVisibleText("English");
-
-        WebElement selectCat = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[3]/div/div/div[2]/form/div[2]/select"));
-        Select selectTheCat = new Select(selectCat);
-        selectTheCat.selectByVisibleText("sebuah kategori");
-
-        WebElement nameForm = driver.findElement((By.xpath("//*[@id=\"ajaxForm\"]/div[3]/input")));
-        nameForm.click();
-        nameForm.sendKeys("sebuah subkategori");
-
-        selectStatus = new Select(driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/select")));
-        selectStatus.selectByVisibleText("Active");
-
-        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
-
-        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            //
-        }
-
-        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a")).click();
-
-        selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
-        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
-        select = new Select(selectLang);
-        select.selectByVisibleText("English");
-
-
-        WebElement selectCat2 = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[3]/div/div/div[2]/form/div[2]/select"));
-        wait.until(ExpectedConditions.elementToBeClickable(selectCat2));
-        selectTheCat = new Select(selectCat2);
-        selectTheCat.selectByVisibleText("sebuah kategori");
-
-        nameForm = driver.findElement((By.xpath("//*[@id=\"ajaxForm\"]/div[3]/input")));
-        nameForm.click();
-        nameForm.sendKeys("a subcategory");
-
-        selectStatus = new Select(driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/select")));
-        selectStatus.selectByVisibleText("Active");
-
-        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
-
-        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            //
-        }
+//
+//        WebElement subCat = driver.findElement(By.xpath("//*[@id=\"productManagement\"]/ul/li[2]/a"));
+//        wait.until(ExpectedConditions.elementToBeClickable(subCat));
+//        subCat.click();
+//
+//        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a")).click();
+//
+//        selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+//        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
+//        select = new Select(selectLang);
+//        select.selectByVisibleText("English");
+//
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div[3]/div/div/div[3]/div/div/div[2]/form/div[2]/select")));
+//        WebElement selectCat2 = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[3]/div/div/div[2]/form/div[2]/select"));
+//        wait.until(ExpectedConditions.elementToBeClickable(selectCat2));
+//        Select selectTheCat = new Select(selectCat2);
+//        selectTheCat.selectByVisibleText("sebuah kategori");
+//
+//        WebElement nameForm = driver.findElement((By.xpath("//*[@id=\"ajaxForm\"]/div[3]/input")));
+//        nameForm.click();
+//        nameForm.sendKeys("sebuah subkategori");
+//
+//        selectStatus = new Select(driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/select")));
+//        selectStatus.selectByVisibleText("Active");
+//
+//        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
+//
+//        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            //
+//        }
+//
+//        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a")).click();
+//
+//        selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+//        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
+//        select = new Select(selectLang);
+//        select.selectByVisibleText("English");
+//
+//
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div[3]/div/div/div[3]/div/div/div[2]/form/div[2]/select")));
+//        WebElement selectCat = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[3]/div/div/div[2]/form/div[2]/select"));
+//        wait.until(ExpectedConditions.elementToBeClickable(selectCat));
+//        selectTheCat = new Select(selectCat);
+//        selectTheCat.selectByVisibleText("sebuah kategori");
+//
+//
+//        nameForm = driver.findElement((By.xpath("//*[@id=\"ajaxForm\"]/div[3]/input")));
+//        nameForm.click();
+//        nameForm.sendKeys("a subcategory");
+//
+//        selectStatus = new Select(driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/select")));
+//        selectStatus.selectByVisibleText("Active");
+//
+//        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
+//
+//        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            //
+//        }
 
         //add item
 //        driver.findElement(By.xpath("//*[@id=\"productManagement\"]/ul/li[3]/a")).click();
