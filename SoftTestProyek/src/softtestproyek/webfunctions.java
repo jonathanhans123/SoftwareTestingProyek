@@ -31,6 +31,61 @@ public class webfunctions {
         waitForPageLoad(driver);
     }
 
+    public static void about(WebDriver driver) throws InterruptedException{
+        //a[@href='#home_section']
+        //span[normalize-space()='About Section']
+        //input[@id='about_image']
+        //input[@name='about_title']
+        //input[@name='about_subtitle']
+        //textarea[@name='about_content']
+        //input[@name='about_button_text']
+        //input[@name='about_button_url']
+        //input[@id='about_video_image']
+        //input[@name='about_video_url']
+        //button[@id='submitBtn']
+
+        WebElement seting = driver.findElement(By.xpath("//a[@href='#home_section']"));
+        seting.click();
+        Thread.sleep(1000);
+        WebElement theme = driver.findElement(By.xpath("//span[normalize-space()='About Section']"));
+        theme.click();
+        //
+        WebElement uploadc = driver.findElement(By.xpath("//input[@id='about_image']"));
+        uploadc.clear();
+        uploadc.sendKeys("D:\\Kuliah\\SMT 6\\project softest\\media\\about1.jpg");
+        WebElement upload2 = driver.findElement(By.xpath("//input[@id='about_video_image']"));
+        upload2.clear();
+        upload2.sendKeys("D:\\Kuliah\\SMT 6\\project softest\\media\\about2.jpg");
+
+        WebElement txt = driver.findElement(By.xpath("//input[@name='about_title']"));
+        txt.clear();
+        txt.sendKeys("Introducing Brand New Future");
+
+        WebElement txt2 = driver.findElement(By.xpath("//input[@name='about_subtitle']"));
+        txt2.clear();
+        txt2.sendKeys("Virtual Youtuber");
+
+        WebElement txt3 = driver.findElement(By.xpath("//textarea[@name='about_content']"));
+        txt3.clear();
+        txt3.sendKeys("A VTuber, or virtual YouTuber, is an online entertainer who uses a virtual avatar generated using computer graphics. Real-time motion capture software or technology are often—but not always—used to capture movement.");
+
+        WebElement txt4 = driver.findElement(By.xpath("//input[@name='about_button_text']"));
+        txt4.clear();
+        txt4.sendKeys("Join Us!");
+
+        WebElement txt5 = driver.findElement(By.xpath("//input[@name='about_button_url']"));
+        txt5.clear();
+        txt5.sendKeys("https://audition.hololivepro.com/en");
+
+        WebElement txt6 = driver.findElement(By.xpath("//input[@name='about_video_url']"));
+        txt6.clear();
+        txt6.sendKeys("https://www.youtube.com/watch?v=3RxlzJWWzdY");
+
+        WebElement update = driver.findElement(By.xpath("//button[@id='submitBtn']"));
+        update.click();
+        waitForPageLoad(driver);
+    }
+
     public static void service(WebDriver driver) throws InterruptedException{
         WebElement seting = driver.findElement(By.xpath("//p[normalize-space()='Services']"));
         seting.click();
