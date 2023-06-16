@@ -49,9 +49,9 @@ public class SoftTestProyek {
         loginUser(driver,wait, "test@gmail.com","test1234");
 
 //        driver.quit();
-        configureShop(driver, wait);
+//        configureShop(driver, wait);
 
-        wf.theme();
+        wf.theme(driver);
 
     }
 
