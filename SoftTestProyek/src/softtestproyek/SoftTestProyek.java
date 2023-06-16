@@ -54,12 +54,22 @@ public class SoftTestProyek {
 //        blog(driver, wait);
 
 
-//        wf.theme(driver);
-//        waitForPageLoad(driver);
-//        Thread.sleep(5000);
-//        wf.heroslider(driver);
-//        Thread.sleep(2000);
-//        wf.footer(driver);
+        wf.theme(driver);
+        waitForPageLoad(driver);
+        Thread.sleep(2000);
+        wf.heroslider(driver);
+        Thread.sleep(2000);
+        wf.footer(driver);
+        Thread.sleep(2000);
+        wf.service(driver);
+        Thread.sleep(2000);
+        wf.about(driver);
+        Thread.sleep(2000);
+        wf.disable(driver);
+        Thread.sleep(2000);
+        wf.rename(driver);
+        Thread.sleep(2000);
+        wf.video(driver);
 
 
     }
