@@ -89,8 +89,34 @@ public class SoftTestProyek {
         charge.sendKeys("23");
         driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
 
+        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            //
+        }
+
         //manage items
-        
+        driver.findElement(By.xpath("//*[@id=\"category\"]/ul/li[4]/a")).click();
+        WebElement categories = driver.findElement(By.xpath("//*[@id=\"productManagement\"]/ul/li[1]/a"));
+        wait.until(ExpectedConditions.elementToBeClickable(categories));
+        categories.click();
+
+        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a")).click();
+
+        selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+        select = new Select(selectLang);
+        select.selectByVisibleText("English");
+
+        driver.findElement(By.xpath("//*[@id=\"image\"]")).sendKeys("C:\\Users\\liant\\Pictures\\gambar.jpg");
+        WebElement name = driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[3]/input"));
+        name.click();
+        name.sendKeys("sebuah kategori");
+
+        WebElement status = driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/select"));
+        Select selectStatus = new Select(status);
+        selectStatus.selectByVisibleText("Active");
+
+        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
     }
     
     public static void loginUser(WebDriver driver,WebDriverWait wait,String email, String password){
