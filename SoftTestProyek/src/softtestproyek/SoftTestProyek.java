@@ -73,7 +73,7 @@ public class SoftTestProyek {
 
         //shipping charges
         try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
-            Thread.sleep(5000);
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
             //
         }
@@ -100,7 +100,7 @@ public class SoftTestProyek {
         driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
 
         try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
-            Thread.sleep(5000);
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
             //
         }
@@ -127,6 +127,85 @@ public class SoftTestProyek {
         selectStatus.selectByVisibleText("Active");
 
         driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
+
+        //subcategory
+        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            //
+        }
+
+        WebElement subCat = driver.findElement(By.xpath("//*[@id=\"productManagement\"]/ul/li[2]/a"));
+        wait.until(ExpectedConditions.elementToBeClickable(subCat));
+        subCat.click();
+
+        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a")).click();
+
+        selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
+        select = new Select(selectLang);
+        select.selectByVisibleText("English");
+
+        WebElement selectCat = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[3]/div/div/div[2]/form/div[2]/select"));
+        Select selectTheCat = new Select(selectCat);
+        selectTheCat.selectByVisibleText("sebuah kategori");
+
+        WebElement nameForm = driver.findElement((By.xpath("//*[@id=\"ajaxForm\"]/div[3]/input")));
+        nameForm.click();
+        nameForm.sendKeys("sebuah subkategori");
+
+        selectStatus = new Select(driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/select")));
+        selectStatus.selectByVisibleText("Active");
+
+        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
+
+        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            //
+        }
+
+        driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[1]/div/div[3]/a")).click();
+
+        selectLang = driver.findElement(By.xpath("//*[@id=\"language\"]"));
+        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
+        select = new Select(selectLang);
+        select.selectByVisibleText("English");
+
+
+        WebElement selectCat2 = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[3]/div/div/div[2]/form/div[2]/select"));
+        wait.until(ExpectedConditions.elementToBeClickable(selectCat2));
+        selectTheCat = new Select(selectCat2);
+        selectTheCat.selectByVisibleText("sebuah kategori");
+
+        nameForm = driver.findElement((By.xpath("//*[@id=\"ajaxForm\"]/div[3]/input")));
+        nameForm.click();
+        nameForm.sendKeys("a subcategory");
+
+        selectStatus = new Select(driver.findElement(By.xpath("//*[@id=\"ajaxForm\"]/div[4]/select")));
+        selectStatus.selectByVisibleText("Active");
+
+        driver.findElement(By.xpath("//*[@id=\"submitBtn\"]")).click();
+
+        try{ //ada animasi loading ga jelas jadi di sleep kalo pake wait tetep error
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            //
+        }
+
+        //add item
+//        driver.findElement(By.xpath("//*[@id=\"productManagement\"]/ul/li[3]/a")).click();
+//
+//        WebElement digitalProductButton = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div[2]/a"));
+//        wait.until(ExpectedConditions.elementToBeClickable(digitalProductButton));
+//        digitalProductButton.click();
+//
+//        driver.findElement(By.xpath("//*[@id=\"image\"]")).sendKeys("C:\\Users\\liant\\Pictures\\softest\\0.jpg");
+////        driver.findElement(By.xpath("//*[@id=\"my-dropzone\"]")).sendKeys("C:\\Users\\liant\\Pictures\\softest\\0.jpg");
+//        driver.findElement(By.xpath("//*[@id=\"productStock\"]")).sendKeys("20");
+
+
+
     }
     
     public static void loginUser(WebDriver driver,WebDriverWait wait,String email, String password){
