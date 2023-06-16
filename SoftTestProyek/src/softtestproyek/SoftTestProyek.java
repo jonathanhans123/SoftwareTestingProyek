@@ -34,9 +34,11 @@ public class SoftTestProyek {
      */
     public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
-        System.setProperty("webdriver.chrome.driver", "E:\\.KULIAH\\Semester_6\\Software Testing\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\Kuliah\\SMT 6\\Software Testing\\chromedriver_win32\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        
+
+        webfunctions wf = new webfunctions();
+
         String[][] data = readDataFromGoogleSheets();           
         printDataFromGoogleSheets(data);
         
@@ -48,6 +50,9 @@ public class SoftTestProyek {
 
 //        driver.quit();
         configureShop(driver, wait);
+
+        wf.theme();
+
     }
 
     public static void configureShop(WebDriver driver, WebDriverWait wait){
