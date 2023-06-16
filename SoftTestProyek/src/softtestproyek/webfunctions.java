@@ -30,6 +30,23 @@ public class webfunctions {
         update.click();
         waitForPageLoad(driver);
     }
+
+    public static void footer(WebDriver driver) throws InterruptedException {
+        WebElement footer = driver.findElement(By.xpath("//a[@href='#footer']"));
+        footer.click();
+        Thread.sleep(500);
+        WebElement theme = driver.findElement(By.xpath("//span[normalize-space()='Footer Logo & Text']"));
+        theme.click();
+        WebElement upload = driver.findElement(By.xpath("//input[@name='logo']"));
+        upload.sendKeys("D:\\Kuliah\\SMT 6\\project softest\\media\\footer.jpg");
+        WebElement sub = driver.findElement(By.xpath("//textarea[@name='about_company']"));
+        sub.sendKeys("Hololive Production is a virtual YouTuber agency owned by Japanese tech entertainment company Cover Corporation");
+        WebElement btn = driver.findElement(By.xpath("//div[@role='textbox']//p"));
+        btn.sendKeys("© 2016 COVER Corp.");
+        WebElement send = driver.findElement(By.xpath("//button[@id='submitBtn']"));
+        send.click();
+        waitForPageLoad(driver);
+    }
     public static void heroslider(WebDriver driver) throws InterruptedException {
         WebElement home = driver.findElement(By.xpath("//a[@href='#home_section']"));
         home.click();
@@ -37,7 +54,7 @@ public class webfunctions {
         hero.click();
 
         //add sui
-        WebElement add = driver.findElement(By.xpath("//i[@class='fas fa-plus']"));
+        WebElement add = driver.findElement(By.xpath("//input[@name='logo']"));
         add.click();
 
         //form
