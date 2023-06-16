@@ -31,6 +31,115 @@ public class webfunctions {
         waitForPageLoad(driver);
     }
 
+    public static void service(WebDriver driver) throws InterruptedException{
+        WebElement seting = driver.findElement(By.xpath("//p[normalize-space()='Services']"));
+        seting.click();
+
+        //add1
+        WebElement theme = driver.findElement(By.xpath("//a[@class='btn btn-primary float-right btn-sm']"));
+        theme.click();
+        Thread.sleep(3000);
+        WebElement upload = driver.findElement(By.xpath("//input[@id='image']"));
+        upload.sendKeys("D:\\Kuliah\\SMT 6\\project softest\\media\\service.jpg");
+        Select cbox = new Select(driver.findElement(By.xpath("//select[@name='user_language_id']")));
+        cbox.selectByValue("302");
+        Thread.sleep(2000);
+
+        WebElement txt = driver.findElement(By.xpath("//input[@name='name']"));
+        txt.sendKeys("Hololive Theme Park Announced");
+//        WebElement btn = driver.findElement(By.xpath("//div[@class='note-editing-area']]"));
+//        btn.sendKeys("Enjoy our fast delivery shipping service with minimum prices");
+        WebElement txt2 = driver.findElement(By.xpath("//input[@name='serial_number']"));
+        txt2.sendKeys("1");
+
+
+
+        WebElement cek = driver.findElement(By.xpath("//input[@id='featured']"));
+        cek.click();
+        WebElement cek2 = driver.findElement(By.xpath("//input[@class='mr-1']"));
+        cek2.click();
+
+//        WebElement txt3 = driver.findElement(By.xpath("//input[@class='bootstrap-tagsinput']"));
+//        txt3.sendKeys("Delivery");
+//        WebElement txt4 = driver.findElement(By.xpath("//textarea[@name='meta_description']"));
+//        txt4.sendKeys("Fast Delivery");
+
+        WebElement submit = driver.findElement(By.xpath("//button[@id='submitBtn']"));
+        submit.click();
+
+        Thread.sleep(2000);
+
+        //add2
+        WebElement themec = driver.findElement(By.xpath("//a[@class='btn btn-primary float-right btn-sm']"));
+        themec.click();
+        Thread.sleep(3000);
+        WebElement uploadc = driver.findElement(By.xpath("//input[@id='image']"));
+        uploadc.sendKeys("D:\\Kuliah\\SMT 6\\project softest\\media\\service2.jpg");
+        Select cboxc = new Select(driver.findElement(By.xpath("//select[@name='user_language_id']")));
+        cboxc.selectByValue("302");
+        Thread.sleep(2000);
+
+        WebElement txtc = driver.findElement(By.xpath("//input[@name='name']"));
+        txtc.sendKeys("Hololive X Valkyrie Connect Collab!");
+//        WebElement btn = driver.findElement(By.xpath("//div[@class='note-editing-area']]"));
+//        btn.sendKeys("Enjoy our fast delivery shipping service with minimum prices");
+        WebElement txt2c = driver.findElement(By.xpath("//input[@name='serial_number']"));
+        txt2c.sendKeys("2");
+
+
+
+        WebElement cekc = driver.findElement(By.xpath("//input[@id='featured']"));
+        cekc.click();
+        WebElement cek2c = driver.findElement(By.xpath("//input[@class='mr-1']"));
+        cek2c.click();
+
+//        WebElement txt3 = driver.findElement(By.xpath("//input[@class='bootstrap-tagsinput']"));
+//        txt3.sendKeys("Delivery");
+//        WebElement txt4 = driver.findElement(By.xpath("//textarea[@name='meta_description']"));
+//        txt4.sendKeys("Fast Delivery");
+
+        WebElement submitc = driver.findElement(By.xpath("//button[@id='submitBtn']"));
+        submitc.click();
+
+        Thread.sleep(2000);
+
+        //add3
+        WebElement theme2 = driver.findElement(By.xpath("//a[@class='btn btn-primary float-right btn-sm']"));
+        theme2.click();
+        Thread.sleep(3000);
+        WebElement upload2 = driver.findElement(By.xpath("//input[@id='image']"));
+        upload2.sendKeys("D:\\Kuliah\\SMT 6\\project softest\\media\\service3.png");
+        Select cbox2 = new Select(driver.findElement(By.xpath("//select[@name='user_language_id']")));
+        cbox2.selectByValue("302");
+        Thread.sleep(2000);
+
+        WebElement txtb = driver.findElement(By.xpath("//input[@name='name']"));
+        txtb.sendKeys("Hololive Baseball Merch With Giants!");
+//        WebElement btn = driver.findElement(By.xpath("//div[@class='note-editing-area']]"));
+//        btn.sendKeys("Enjoy our fast delivery shipping service with minimum prices");
+        WebElement txtb2 = driver.findElement(By.xpath("//input[@name='serial_number']"));
+        txtb2.sendKeys("3");
+
+
+
+        WebElement cekb = driver.findElement(By.xpath("//input[@id='featured']"));
+        cekb.click();
+        WebElement cekb2 = driver.findElement(By.xpath("//input[@class='mr-1']"));
+        cekb2.click();
+
+//        WebElement txt3 = driver.findElement(By.xpath("//input[@class='bootstrap-tagsinput']"));
+//        txt3.sendKeys("Delivery");
+//        WebElement txt4 = driver.findElement(By.xpath("//textarea[@name='meta_description']"));
+//        txt4.sendKeys("Fast Delivery");
+
+        WebElement submit2 = driver.findElement(By.xpath("//button[@id='submitBtn']"));
+        submit2.click();
+
+        Thread.sleep(2000);
+
+        waitForPageLoad(driver);
+    }
+
     public static void footer(WebDriver driver) throws InterruptedException {
         WebElement footer = driver.findElement(By.xpath("//a[@href='#footer']"));
         footer.click();

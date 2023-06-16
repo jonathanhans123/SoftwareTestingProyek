@@ -57,6 +57,8 @@ public class SoftTestProyek {
 //        wf.heroslider(driver);
 //        Thread.sleep(2000);
 //        wf.footer(driver);
+          Thread.sleep(2000);
+          wf.service(driver);
 
     }
 
