@@ -31,21 +31,47 @@ public class webfunctions {
         waitForPageLoad(driver);
     }
 
+    public static void rename(WebDriver driver){
+
+        //span[normalize-space()='Home Sections']
+        //input[@placeholder='Enter service title']
+        //input[@placeholder='Enter service subtitle']
+        //button[@id='submitBtn']
+
+        WebElement seting = driver.findElement(By.xpath("//span[normalize-space()='Home Sections']"));
+        seting.click();
+        WebElement t1 = driver.findElement(By.xpath("//input[@placeholder='Enter service title']"));
+        t1.clear();
+        t1.sendKeys("Latest News");
+        WebElement t2 = driver.findElement(By.xpath("//input[@placeholder='Enter service subtitle']"));
+        t2.clear();
+        t2.sendKeys("Don't miss out our vtuber events!");
+        WebElement update = driver.findElement(By.xpath("//button[@id='submitBtn']"));
+        update.click();
+        waitForPageLoad(driver);
+    }
+
     public static void disable(WebDriver driver) throws InterruptedException {
 
-        WebElement seting = driver.findElement(By.xpath("//p[normalize-space()='Home']"));
-        seting.click();
-        Thread.sleep(1000);
         WebElement theme = driver.findElement(By.xpath("//span[normalize-space()='Sections Hide / Show']"));
         theme.click();
         WebElement two = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/label[2]/span[1]"));
         two.click();
         WebElement upd = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[7]/div[1]/label[2]/span[1]"));
         upd.click();
+        WebElement upd1 = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[6]/div[1]/label[2]/span[1]"));
+        upd1.click();
+        WebElement upd2 = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[4]/div[1]/label[2]/span[1]"));
+        upd2.click();
+        WebElement upd3 = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[5]/div[1]/label[2]/span[1]"));
+        upd3.click();
+        WebElement upd4 = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[8]/div[1]/label[2]/span[1]"));
+        upd4.click();
         WebElement update = driver.findElement(By.xpath("//button[@id='displayNotif']"));
         update.click();
         waitForPageLoad(driver);
     }
+
 
     public static void about(WebDriver driver) throws InterruptedException{
         //a[@href='#home_section']
@@ -220,10 +246,27 @@ public class webfunctions {
         WebElement upload = driver.findElement(By.xpath("//input[@name='logo']"));
         upload.sendKeys("D:\\Kuliah\\SMT 6\\project softest\\media\\footer.jpg");
         WebElement sub = driver.findElement(By.xpath("//textarea[@name='about_company']"));
+        sub.clear();
         sub.sendKeys("Hololive Production is a virtual YouTuber agency owned by Japanese tech entertainment company Cover Corporation");
         WebElement btn = driver.findElement(By.xpath("//div[@role='textbox']//p"));
+        btn.clear();
         btn.sendKeys("© 2016 COVER Corp.");
         WebElement send = driver.findElement(By.xpath("//button[@id='submitBtn']"));
+        send.click();
+        waitForPageLoad(driver);
+    }
+    public static void video(WebDriver driver) throws InterruptedException {
+        WebElement theme = driver.findElement(By.xpath("//span[normalize-space()='Video Section']"));
+        theme.click();
+        WebElement upload = driver.findElement(By.xpath("//input[@id='image']"));
+        upload.sendKeys("D:\\Kuliah\\SMT 6\\project softest\\media\\video.jpg");
+        WebElement sub = driver.findElement(By.xpath("//input[@name='video_section_title']"));
+        sub.clear();
+        sub.sendKeys("We Are Hiring!");
+        WebElement btn = driver.findElement(By.xpath("//input[@name='video_section_url']"));
+        btn.clear();
+        btn.sendKeys("https://www.youtube.com/watch?v=Ok6ncJ2JEGY");
+        WebElement send = driver.findElement(By.xpath("//button[@type='submit']"));
         send.click();
         waitForPageLoad(driver);
     }
@@ -231,10 +274,12 @@ public class webfunctions {
         WebElement home = driver.findElement(By.xpath("//a[@href='#home_section']"));
         home.click();
         WebElement hero = driver.findElement(By.xpath("//span[normalize-space()='Hero Section']"));
+        Thread.sleep(1000);
         hero.click();
 
         //add sui
-        WebElement add = driver.findElement(By.xpath("//input[@name='logo']"));
+        Thread.sleep(2000);
+        WebElement add = driver.findElement(By.xpath("//a[@class='btn btn-primary btn-sm float-lg-right float-left']"));
         add.click();
 
         //form
