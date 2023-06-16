@@ -59,8 +59,10 @@ public class SoftTestProyek {
 //        wf.footer(driver);
 //          Thread.sleep(2000);
 //          wf.service(driver);
-          Thread.sleep(2000);
-          wf.about(driver);
+//          Thread.sleep(2000);
+//          wf.about(driver);
+            Thread.sleep(2000);
+          wf.disable(driver);
 
     }
 

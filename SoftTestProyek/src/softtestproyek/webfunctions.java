@@ -31,6 +31,20 @@ public class webfunctions {
         waitForPageLoad(driver);
     }
 
+    public static void disable(WebDriver driver) throws InterruptedException {
+
+        WebElement seting = driver.findElement(By.xpath("//p[normalize-space()='Home']"));
+        seting.click();
+        Thread.sleep(1000);
+        WebElement theme = driver.findElement(By.xpath("//span[normalize-space()='Sections Hide / Show']"));
+        theme.click();
+        WebElement two = driver.findElement(By.xpath("//div[@class='card']//form"));
+        two.click();
+        WebElement update = driver.findElement(By.xpath("//button[@id='displayNotif']"));
+        update.click();
+        waitForPageLoad(driver);
+    }
+
     public static void about(WebDriver driver) throws InterruptedException{
         //a[@href='#home_section']
         //span[normalize-space()='About Section']
