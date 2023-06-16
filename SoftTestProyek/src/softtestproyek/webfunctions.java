@@ -38,8 +38,10 @@ public class webfunctions {
         Thread.sleep(1000);
         WebElement theme = driver.findElement(By.xpath("//span[normalize-space()='Sections Hide / Show']"));
         theme.click();
-        WebElement two = driver.findElement(By.xpath("//div[@class='card']//form"));
+        WebElement two = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[2]/div[1]/label[2]/span[1]"));
         two.click();
+        WebElement upd = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/div[7]/div[1]/label[2]/span[1]"));
+        upd.click();
         WebElement update = driver.findElement(By.xpath("//button[@id='displayNotif']"));
         update.click();
         waitForPageLoad(driver);
